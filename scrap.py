@@ -16,3 +16,6 @@ headers = {
     "Referer": "https://www.google.com/"
 }
 webpage = requests.get('https://www.ambitionbox.com/list-of-companies?page=1', headers=headers).text
+
+soup = BeautifulSoup(webpage, 'lxml')
+print(soup.prettify())

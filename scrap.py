@@ -26,3 +26,25 @@ len(soup.find_all('h2'))
 for i in soup.find_all('h2'):
     print(i.text)
     print(i.text.strip())
+
+soup.find_all('p', class_='rating')
+
+company = soup.find_all('div',class_='company-content-wrapper')
+
+name=[]
+rating=[]
+reviews=[]
+ctype=[]
+hq=[]
+age=[]
+employees=[]
+
+
+for i in company:
+    name.append(i.find('h2').text.strip())
+    rating.append(i.find('p', class_='rating').text.strip())
+    reviews.append(i.find('a', class_='review-count').text.strip())
+    ctype.append(i.find_all('p', class_='infoEntity')[0].text.strip())
+    hq.append(i.find_all('p', class_='infoEntity')[1].text.strip())
+    age.append(i.find_all('p', class_='infoEntity')[2].text.strip())
+    employees.append(i.find_all('p', class_='infoEntity')[3].text.strip())

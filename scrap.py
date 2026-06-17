@@ -48,3 +48,7 @@ for i in company:
     hq.append(i.find_all('p', class_='infoEntity')[1].text.strip())
     age.append(i.find_all('p', class_='infoEntity')[2].text.strip())
     employees.append(i.find_all('p', class_='infoEntity')[3].text.strip())
+
+d = {'name':name, 'rating':rating, 'reviews':reviews, 'type':ctype, 'headquarter':hq, 'age':age, 'employees':employees}
+df = pd.DataFrame(d)
+print(df)

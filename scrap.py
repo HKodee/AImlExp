@@ -19,3 +19,10 @@ webpage = requests.get('https://www.ambitionbox.com/list-of-companies?page=1', h
 
 soup = BeautifulSoup(webpage, 'lxml')
 print(soup.prettify())
+
+soup.find_all('h1')[0].text
+len(soup.find_all('h2'))
+
+for i in soup.find_all('h2'):
+    print(i.text)
+    print(i.text.strip())

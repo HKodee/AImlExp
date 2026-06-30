@@ -6,5 +6,32 @@ final = pd.DataFrame()
 
 for j in range(1,11):
 
-    url = 'https://www.ambitionbox.com/list-of-companies?page={}'.format()
-    
+    url = 'https://www.ambitionbox.com/list-of-companies?page={}'.format(j)
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Referer": "https://www.google.com/"
+    }
+    webpage = requests.get('https://www.ambitionbox.com/list-of-companies?page=1', headers=headers).text
+    soup = BeautifulSoup(webpage, 'lxml')
+    name=[]
+    rating=[]
+    reviews=[]
+    ctype=[]
+    hq=[]
+    age=[]
+    employees=[]
+
+
+    for i in company:
+        name.append(i.find('h2').text.strip())
+        rating.append(i.find('p', class_='rating').text.strip())
+        reviews.append(i.find('a', class_='review-count').text.strip())
+        ctype.append(i.find_all('p', class_='infoEntity')[0].text.strip())
+        hq.append(i.find_all('p', class_='infoEntity')[1].text.strip())
+        age.append(i.find_all('p', class_='infoEntity')[2].text.strip())
+        employees.append(i.find_all('p', class_='infoEntity')[3].text.strip())
+
+    d = {'name':name, 'rating':rating, 'reviews':reviews, 'type':ctype, 'headquarter':hq, 'age':age, 'employees':employees}
+    df = pd.DataFrame(d)
+    print(df)

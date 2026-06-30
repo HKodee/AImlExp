@@ -12,8 +12,12 @@ for j in range(1,11):
         "Accept-Language": "en-US,en;q=0.9",
         "Referer": "https://www.google.com/"
     }
+    
     webpage = requests.get('https://www.ambitionbox.com/list-of-companies?page=1', headers=headers).text
     soup = BeautifulSoup(webpage, 'lxml')
+    
+    company = soup.find_all('div',class_='company-content-wrapper')
+    
     name=[]
     rating=[]
     reviews=[]
@@ -34,4 +38,4 @@ for j in range(1,11):
 
     d = {'name':name, 'rating':rating, 'reviews':reviews, 'type':ctype, 'headquarter':hq, 'age':age, 'employees':employees}
     df = pd.DataFrame(d)
-    print(df)
+    final=final.append(df,ignore_index=True)

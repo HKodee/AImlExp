@@ -19,4 +19,4 @@ soup = BeautifulSoup(webpage, 'lxml')
 #     print(mlink)
 
 
-print("watch?v=" in webpage)
+print("ytLockupViewModelContentImage" in webpage)

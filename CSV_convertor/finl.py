@@ -10,11 +10,4 @@ video_list=np.array(df["Video url"])
 pdf=pd.DataFrame(video_list)
 pdf.to_csv('output.csv',index=False)
 
-# ydl_opts = {
-#     "format": "bestvideo+bestaudio/best",
-#     "merge_output_format": "mp4",
-#     "continuedl": True,
-#     "download_archive": "downloaded.txt",
-#     "overwrites": False,
-# }
 
